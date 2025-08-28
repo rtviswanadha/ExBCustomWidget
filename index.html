@@ -9,9 +9,10 @@
     h1 { color: #24292e; }
     ul { list-style: none; padding: 0; }
     li { margin: 6px 0; }
-    a { color: #0366d6; text-decoration: none; }
+    a { color: #0366d6; text-decoration: none; cursor: pointer; }
     a:hover { text-decoration: underline; }
     .folder { font-weight: bold; margin-top: 12px; }
+    .back { margin-top: 20px; display: inline-block; }
   </style>
 </head>
 <body>
@@ -20,33 +21,45 @@
   <div id="file-list">Loading...</div>
 
   <script>
-    // Update these for your repo
     const owner = "rtviswanadha";
     const repo = "ExBCustomWidget";
-    const branch = "main"; // change if default branch is different
-    const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/?ref=${branch}`;
+    const branch = "main"; // change if needed
+    let currentPath = "";
 
-    async function loadFiles() {
+    async function loadFiles(path = "") {
+      currentPath = path;
+      const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`;
+
       try {
         const res = await fetch(apiUrl);
         if (!res.ok) throw new Error("GitHub API error");
         const files = await res.json();
 
-        let html = "<ul>";
+        let html = "";
+        if (path) {
+          const parent = path.split("/").slice(0, -1).join("/");
+          html += `<div class="back"><a onclick="loadFiles('${parent}')">⬅️ Back</a></div>`;
+        }
+
+        html += "<ul>";
         files.forEach(file => {
           if (file.type === "file") {
-            html += `<li>📄 <a href="${file.path}" target="_blank">${file.name}</a></li>`;
+            // Link to actual GitHub Pages hosted file
+            html += `<li>📄 <a href="https://${owner}.github.io/${repo}/${file.path}" target="_blank">${file.name}</a></li>`;
           } else if (file.type === "dir") {
-            html += `<li class="folder">📂 <a href="./${file.name}/">${file.name}/</a></li>`;
+            html += `<li class="folder">📂 <a onclick="loadFiles('${file.path}')">${file.name}/</a></li>`;
           }
         });
         html += "</ul>";
+
         document.getElementById("file-list").innerHTML = html;
       } catch (err) {
-        document.getElementById("file-list").textContent = "Failed to load files: " + err.message;
+        document.getElementById("file-list").textContent =
+          "Failed to load files: " + err.message;
       }
     }
 
+    // Load root on page start
     loadFiles();
   </script>
 </body>
