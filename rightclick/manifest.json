@@ -1,25 +1,51 @@
-{
-  "name": "rightclick",
-  "label": "Right Click",
-  "type": "widget",
-  "version": "1.0.0",
-  "exbVersion": "1.17.0",
-  "author": "Brian McLeer, City of Grand Junction",
-  "description": "Adds custom right-click functionality to map widgets",
-  "copyright": "",
-  "license": "http://www.apache.org/licenses/LICENSE-2.0",
-  "properties": {
-    "supportInlineEditing": false,
-    "supportRepeat": false
-  },
-  "translatedLocales": [
-    "en"
-  ],
-  "defaultSize": {
-    "width": 300,
-    "height": 200
-  },
-  "icon": {
-    "svg": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjRkZGRkZGIi8+CjxwYXRoIGQ9Ik01MCA1MEw2MCA0MEw0MCA0MEw1MCA1MFoiIGZpbGw9IiMwMDc4RkYiLz4KPHBhdGggZD0iTTUwIDUwTDQwIDYwTDYwIDYwTDUwIDUwWiIgZmlsbD0iIzAwNzhGRiIvPgo8L3N2Zz4="
-  }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raviteja Viswanadha GitHub Pages</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #24292e;
+      color: white;
+      padding: 20px;
+    }
+    main {
+      padding: 20px;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin: 10px 0;
+    }
+    a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Raviteja Viswanadha GitHub Pages</h1>
+  </header>
+  <main>
+    <p>Quick links to hosted files in this repo:</p>
+    <ul>
+      <li>
+        <a href="./rightclick/manifest.json" target="_blank">Rightclick → manifest.json</a>
+      </li>
+    </ul>
+  </main>
+</body>
+</html>
